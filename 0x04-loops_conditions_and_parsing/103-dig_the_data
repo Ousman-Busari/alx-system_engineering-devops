@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# parses an apache access log file, sorts the data,
+# groups visitors by IP and HTTP status code in the format
+# OCCURENCE_NUMBER IP HTTP_CODE, in list format
+
+awk '{split($0,a); print a[1],a[9]}' < apache-access.log | sort | uniq -c | sort -rn
