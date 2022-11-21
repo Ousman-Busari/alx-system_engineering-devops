@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-#pings an IP address that is passed as an argument
-
-ping $1
