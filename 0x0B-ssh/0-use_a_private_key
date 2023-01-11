@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# uses ssh to connect to a remote host wuth the user ubuntu
+ssh ubuntu@100.25.171.38 -i ~/.ssh/school
