@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# checks who a user, passed as an argument, is
+su "$1" -c 'whoami'
+
+
+
