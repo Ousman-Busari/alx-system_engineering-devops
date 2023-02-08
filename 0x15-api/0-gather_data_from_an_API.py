@@ -6,7 +6,6 @@ returns his/her TODO list
 
 import requests
 import sys
-import json
 
 
 def gather_data():
@@ -19,8 +18,8 @@ def gather_data():
     completed = [t for t in todos if t["completed"] is True]
 
     print("Employee {} is done with tasks({}/{}):".format(
-        employee["name"], len(completed), len(todos)))
-    [print("\t {}".format(c["title"])) for c in completed]
+        employee.get("name"), len(completed), len(todos)))
+    [print("\t {}".format(c.get("title"))) for c in completed]
 
 
 if __name__ == "__main__":
