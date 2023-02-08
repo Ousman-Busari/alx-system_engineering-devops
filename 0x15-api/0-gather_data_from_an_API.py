@@ -10,8 +10,8 @@ import sys
 
 def gather_data():
     id = sys.argv[1]
-    employee = requests.get("https://jsonplaceholder.typicode.com/users/"
-                            + id).json()
+    employee = requests.get("https://jsonplaceholder.typicode.com/users/" +
+                            id).json()
     todos = requests.get("https://jsonplaceholder.typicode.com/todos",
                          params={"userId": int(id)}).json()
 
