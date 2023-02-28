@@ -24,7 +24,7 @@ def count_words(subreddit, word_list, count=0, after="", hot_list=[]):
                        allow_redirects=False)
     
     try:
-        results = response.json()
+        results = res.json()
         if response.status_code == 404:
             raise Exception
     except Exception:
