@@ -25,8 +25,6 @@ def count_words(subreddit, word_list, count=0, after="", hot_list=[]):
 
     if res.status_code != 200:
         return
-    # except Exception:
-    #     return
 
     res = res.json().get("data")
     after = res.get("after")
@@ -40,7 +38,6 @@ def count_words(subreddit, word_list, count=0, after="", hot_list=[]):
 
     if after is None:
         search_count = {}
-        print(word_list)
         for search in [x.lower() for x in word_list]:
             count = 0
             for word in hot_list:
