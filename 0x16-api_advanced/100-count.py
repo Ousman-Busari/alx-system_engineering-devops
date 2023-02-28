@@ -23,12 +23,12 @@ def count_words(subreddit, word_list, count=0, after="", hot_list=[]):
     response = requests.get(url, headers=headers, params=params,
                             allow_redirects=False)
 
-    try:
-        res = response.json()
-        if response.status_code == 404:
-            raise Exception
-    except Exception:
+    # try:
+    #     res = response.json()
+    if response.status_code == 404:
         return
+    # except Exception:
+    #     return
 
     res = res.get("data")
     after = res.get("after")
