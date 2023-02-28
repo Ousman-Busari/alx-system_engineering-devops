@@ -23,9 +23,7 @@ def count_words(subreddit, word_list, count=0, after="", hot_list=[]):
     res = requests.get(url, headers=headers, params=params,
                        allow_redirects=False)
 
-    # try:
-    #     res = response.json()
-    if res.status_code == 404:
+    if res.status_code != 200:
         return
     # except Exception:
     #     return
