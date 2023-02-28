@@ -20,17 +20,17 @@ def count_words(subreddit, word_list, count=0, after="", hot_list=[]):
         "after": after,
         "count": count
     }
-    res = requests.get(url, headers=headers, params=params,
+    response = requests.get(url, headers=headers, params=params,
                        allow_redirects=False)
     
     try:
-        results = res.json()
+        res = response.json()
         if response.status_code == 404:
             raise Exception
     except Exception:
         return
     
-    res = res.json().get("data")
+    res = res.get("data")
     after = res.get("after")
     count += res.get("dist")
 
@@ -42,6 +42,7 @@ def count_words(subreddit, word_list, count=0, after="", hot_list=[]):
 
     if after is None:
         search_count = {}
+        print(word_list)
         for search in [x.lower() for x in word_list]:
             count = 0
             for word in hot_list:
