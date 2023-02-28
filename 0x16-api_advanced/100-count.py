@@ -49,4 +49,4 @@ def count_words(subreddit, word_list, count=0, after="", hot_list=[]):
 
         search_count = sorted(search_count.items(),
                               key=lambda x: (-x[1], x[0]))
-        [print("{}: {}".format(s[0], s[1])) for s in search_count if s[1] != 0]
+        [print("{}: {} ".format(s[0], s[1])) for s in search_count if s[1] != 0]
