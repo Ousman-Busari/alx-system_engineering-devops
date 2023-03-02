@@ -1,6 +1,6 @@
-# create a deafult index.html file to be serves by apache.
+# Fixes bad `phpp` extensions to `php` in the WordPress file `wp-settings.php`.
 
 exec { 'fix-wordpress':
-  command => 'touch /var/www/html/index.html',
-  path    => '/usr/bin/:/bin/'
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
+  path    => '/usr/local/bin/:/bin/'
 }
