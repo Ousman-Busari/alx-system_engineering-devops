@@ -1,0 +1,40 @@
+# Nginx proxy configuration file Airbnb_clone app through gunicorn
+
+server {
+
+        # Deafult listening port
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	# Customize HTTP response header
+	add_header X-Served-By 87373-web-01;
+
+ 	# server IP as hostname
+	server_name 100.25.171.38;
+
+	# serve /0-hello_route/ from Airbnb_clone_v2
+        location = /airbnb-onepage/ {
+                proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+        }
+
+	# serve /number_odd_or_even/<int:n>/ from Airbnb_clone_v2
+	# with /airbnb-dynamic prepended
+	location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+		 proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+	}
+
+	# serve api from Airbnb_clone_v3
+	location /api {
+		 proxy_pass http://127.0.0.1:5002/api;
+	}
+
+	# serve /2-hbnb from Airbnb_clone_v4 as root location
+	location / {
+		 proxy_pass http://127.0.0.1:5003/2-hbnb/;
+	}
+
+	# serve static content from Airbnb_clone_v4
+	location /static {
+		 proxy_pass http://127.0.0.1:5003;
+	}
+}
